@@ -1,4 +1,7 @@
 import java.awt.FlowLayout;
+import java.awt.LayoutManager;
+
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -33,12 +36,21 @@ public class RegistrationForm {
    */
   public static JPanel buildForm() {
     JPanel panel = new JPanel(new FlowLayout());
-    panel.add(new JLabel("First name:"));
-    panel.add(new JTextField(12));
-    panel.add(new JLabel("Last name:"));
-    panel.add(new JTextField(12));
-    panel.add(new JButton("Submit"));
-    panel.add(new JButton("Cancel"));
+    panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+    JPanel firstName = new JPanel();
+    JPanel lastName = new JPanel();
+    JPanel cancelOrSubmit = new JPanel(new FlowLayout(FlowLayout.CENTER));
+    firstName.setLayout(new FlowLayout(FlowLayout.CENTER));
+    lastName.setLayout(new FlowLayout(FlowLayout.CENTER));
+    firstName.add(new JLabel("First name:"));
+    firstName.add(new JTextField(12));
+    lastName.add(new JLabel("Last name:"));
+    lastName.add(new JTextField(12));
+    cancelOrSubmit.add(new JButton("Submit"));
+    cancelOrSubmit.add(new JButton("Cancel"));
+    panel.add(firstName);
+    panel.add(lastName);
+    panel.add(cancelOrSubmit);
     return panel;
   }
 
